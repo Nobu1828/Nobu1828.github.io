@@ -60,9 +60,9 @@ function calculo (peso){
                             Aca esta por si quieren que tambien muestre el mantenimiento y el M+M/2
                             Solamente tienen que borrar los  (/ * , * /)  */
         resultado = `<br>
-                    SC * 1500: ${sc1500} cc, <br>
+                    SC * 1500: ${sc1500} cc <br>
                     <br>
-                    SC * 2000: ${sc2000}, cc <br>`;
+                    SC * 2000: ${sc2000} cc <br>`;
                     /*Mantenimiento: ${mantenimiento} cc/hr, <br>
                     M+M/2: ${mm}, <br>
                     
