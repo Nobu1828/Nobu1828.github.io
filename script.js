@@ -62,7 +62,7 @@ function calculo (peso){
         resultado = `<br>
                     SC * 1500: ${sc1500} cc, <br>
                     <br>
-                    SC * 2000: ${sc2000}, <br>`;
+                    SC * 2000: ${sc2000}, cc <br>`;
                     /*Mantenimiento: ${mantenimiento} cc/hr, <br>
                     M+M/2: ${mm}, <br>
                     
