@@ -1,0 +1,141 @@
+@import url("https://fonts.googleapis.com/css?family=Montserrat:400,800");
+
+h1 {
+    color: rgb(0, 0, 0);
+    text-shadow: 5px 5px 4px rgb(250, 164, 187);
+}
+
+h2{
+    background-color: rgba(240, 239, 239, 0.644);
+    margin-left: 6%;
+    text-shadow: 5px 5px 4px #FFFFFF;
+    border-radius: 20px;
+    box-shadow: 0px 0px 30px rgba(240, 239, 239, 0.644);
+
+}
+
+body {
+    background-image: linear-gradient(-45deg, rgb(32, 0, 68), rgb(0, 0, 58)  , rgb(0, 2, 133) , rgb(0, 83, 161), rgb(4, 226, 255));
+                    
+    font-family: 'Montserrat', sans-serif;
+    color: rgb(5, 0, 5)
+}
+
+#contenedor {
+    width: 700px;
+    height: 500px;
+    text-align: center;
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    border-radius: 20px;
+    margin-top: 5%;
+    box-shadow: 0px 0px 50px black;
+}
+
+#calculadora {
+    background: rgb(240, 239, 239);
+    width: 50%;
+    height: 100%;
+    float: left;
+    border-radius: 20px;
+
+}
+
+#hidratacion{
+    text-shadow: 5px 5px 4px rgba(109, 109, 255, 0.452);
+
+}
+
+#completar{
+    text-shadow: 5px 5px 4px rgba(109, 109, 255, 0.452);
+
+}
+
+#detalle {
+    background: rgb(243, 0, 65);
+    width: 50%;
+    height: 100%;
+    float: left;
+    color: rgb(228, 255, 254);
+    text-shadow: 5px 5px 4px #000000;
+    border-radius: 20px;
+
+}
+
+
+#foto {
+    width: auto;
+    height: 100%;
+    margin-left: -5%;
+    position: unset;
+    overflow: hidden;
+    
+}
+
+#imagen {
+    box-shadow: 0px 0px 20px #000000;;
+
+}
+
+#hidratacion{
+    display: block;
+
+}
+
+#completar{
+    display: block;
+
+}
+
+.contenido {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    overflow: hidden;
+    padding: 40px;
+}
+
+input {
+	width: 85%;
+    padding: 12px 15px;
+    border-radius: 10px;
+    border: 1px 1px 10px black;
+    background-color: rgb(228, 226, 226);
+}
+
+button {
+    font-size: 16px;
+	font-weight: bold;
+	padding: 12px 45px;
+	border-radius: 30px;
+	background-image: linear-gradient(45deg, rgb(0, 255, 191), rgb(0, 83, 0));
+	border: 2px solid rgb(0, 51, 38);
+	color: #FFFFFF;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	transition: transform 50ms ease-in;
+
+}
+
+button:active {
+	transform: scale(0.9);
+
+}
+
+#error {
+    color: red;
+    text-shadow: 5px 5px 4px rgba(95, 0, 0, 0.288);
+    font-weight: bold;
+    display: none;
+}
+
+
+.resultado {
+    color: rgb(0, 2, 117);
+    font-weight: bold;
+    text-shadow: 4px 4px 4px rgb(0, 70, 70, 0.315);
+    font-size: 18px;
+    margin-bottom: 15px;
+    display: none;
+}
