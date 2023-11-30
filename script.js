@@ -17,8 +17,8 @@ function calculo (peso){
         const mm = Math.round(mantenimiento * 1.5);
         
         resultado = `<br>
-                    Volumen diario: ${volumenDiario} cc, <br>
-                    Mantenimiento: ${mantenimiento} cc/hr, <br>
+                    Volumen diario: ${volumenDiario} cc <br>
+                    Mantenimiento: ${mantenimiento} cc/hr <br>
                     m+m/2: ${mm} cc`;        
     } 
 
@@ -29,8 +29,8 @@ function calculo (peso){
         const mantenimiento = Math.round(volumenDiario / 24 ) ;
         const mm = Math.round(mantenimiento * 1.5);
         resultado = `<br>
-                    Volumen diario: ${volumenDiario} cc, <br>
-                    Mantenimiento: ${mantenimiento} cc/hr, <br>
+                    Volumen diario: ${volumenDiario} cc <br>
+                    Mantenimiento: ${mantenimiento} cc/hr <br>
                     m+m/2: ${mm} cc`;        
     } 
 
@@ -40,8 +40,8 @@ function calculo (peso){
         const mantenimiento = Math.round(volumenDiario / 24 ) ;
         const mm = Math.round(mantenimiento  * 1.5);
         resultado = `<br>
-                    Volumen diario: ${volumenDiario} cc, <br>
-                    Mantenimiento: ${mantenimiento} cc/hr, <br>
+                    Volumen diario: ${volumenDiario} cc <br>
+                    Mantenimiento: ${mantenimiento} cc/hr <br>
                     m+m/2: ${mm} cc`;        
     } 
 
@@ -70,8 +70,8 @@ function calculo (peso){
                     Mantenimiento: ${mantenimiento1} cc/hr, <br>
                     M+M/2: ${mm1} cc, <br>`;*/
     }
-    return `Para un peso de ${peso} ${unidad}, <br>
-            Se utilizo el metodo ${metodo}. <br>
+    return `Para un peso de ${peso} ${unidad} <br>
+            Se utilizo el metodo ${metodo} <br>
             ${resultado}`;
 }
 
