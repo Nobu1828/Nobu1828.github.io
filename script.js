@@ -1,110 +1,98 @@
-const CALCULAR = document.getElementById("calcular");
-const ERROR = document.getElementById("error");
-const FLU = document.getElementById("flu");
-const MAN = document.getElementById("man");
-const TITULO = document.getElementById("hidratacion");
-const TEXTO = document.getElementById("completar");
-
-function calculo (peso){
-    const unidad ="Kg";
-    let metodo;
-    let resultado;
-
-    metodo = "Hollidar-Segar";
-    if (peso <= 10 && peso > 0) {
-        const volumenDiario = peso * 100;
-        const mantenimiento = Math.round(volumenDiario / 24 ) ;
-        const mm = Math.round(mantenimiento * 1.5);
-        
-        resultado = `<br>
-                    Volumen diario: ${volumenDiario} cc <br>
-                    Mantenimiento: ${mantenimiento} cc/hr <br>
-                    m+m/2: ${mm} cc`;        
-    } 
+let intentos = 10;
+let diccionario = [/*"ABETO", "ACTOR", "AGUAS", "AGUDO", "ALADO", "ALBAS", "ALTAR", "ANTON", "ATIZO", "AVALA", "AVION", "AZUL"*/];
 
 
 
-    else if (peso <= 20 && peso > 10) {
-        const volumenDiario = (peso - 10) * 50 + 1000;
-        const mantenimiento = Math.round(volumenDiario / 24 ) ;
-        const mm = Math.round(mantenimiento * 1.5);
-        resultado = `<br>
-                    Volumen diario: ${volumenDiario} cc <br>
-                    Mantenimiento: ${mantenimiento} cc/hr <br>
-                    m+m/2: ${mm} cc`;        
-    } 
+function iniciarJuego() {
+    fetch('https://random-word-api.herokuapp.com/word?length=7')
+    .then(response => response.json())
+    .then(data => {
+      let palabra = data[0];
+      iniciarJuego();
+      console.log(palabra)
+  
+    })
+    .catch(error => {
+      console.error('Error al obtener el diccionario:', error);
+    });
+  
+  
+    /*let palabra = diccionario[Math.floor(Math.random() * diccionario.length)];*/
+  const button = document.getElementById("guess-button");
 
+button.addEventListener("click", intentar);
 
-    else if (peso <= 30 && peso > 20) {
-        const volumenDiario = (peso - 20) * 20 + 1500;
-        const mantenimiento = Math.round(volumenDiario / 24 ) ;
-        const mm = Math.round(mantenimiento  * 1.5);
-        resultado = `<br>
-                    Volumen diario: ${volumenDiario} cc <br>
-                    Mantenimiento: ${mantenimiento} cc/hr <br>
-                    m+m/2: ${mm} cc`;        
-    } 
-
-    else {
-        metodo = "Superficie Corporal";
-        const SC =  peso * 4 + 7
-        const SC2 = peso * 1 + 90
-        const SC3 = SC / SC2
-        const sc1500 = Math.round(SC3 * 1500);
-        const sc2000 = Math.round(SC3 * 2000);
-       /* const mantenimiento = Math.round(sc1500 / 24 );
-        const mantenimiento1 = Math.round(sc2000 / 24 );
-        const mm = (mantenimiento * 1.5);
-        const mm1 = (mantenimiento1 * 1.5);
-        
-                            Aca esta por si quieren que tambien muestre el mantenimiento y el M+M/2
-                            Solamente tienen que borrar los  (/ * , * /)  */
-        resultado = `<br>
-                    SC * 1500: ${sc1500} cc <br>
-                    <br>
-                    SC * 2000: ${sc2000} cc <br>`;
-                    /*Mantenimiento: ${mantenimiento} cc/hr, <br>
-                    M+M/2: ${mm}, <br>
-                    
-                    
-                    Mantenimiento: ${mantenimiento1} cc/hr, <br>
-                    M+M/2: ${mm1} cc, <br>`;*/
+function intentar(){
+	const GRID = document.getElementById("grid");
+    const ROW = document.createElement('div');
+    const INTENTO = leerIntento();
+    ROW.className = 'row';
+    for (let i in palabra){
+        const SPAN = document.createElement('span');
+        SPAN.className = 'letter';
+        if (INTENTO[i]===palabra[i]){ 
+            SPAN.innerHTML = INTENTO[i];
+            SPAN.style.backgroundColor = '#1abc9c';
+            
+        } else if( palabra.includes(INTENTO[i]) ) {
+            SPAN.innerHTML = INTENTO[i];
+            SPAN.style.backgroundColor = '#f1c40f';
+        } else {     
+            SPAN.innerHTML = INTENTO[i];
+            SPAN.style.backgroundColor = '#34495e';
+        }
+        ROW.appendChild(SPAN)
     }
-    return `Para un peso de ${peso} ${unidad} <br>
-            Se utilizo el metodo ${metodo} <br>
-            ${resultado}`;
+    GRID.appendChild(ROW);
+    if (INTENTO === palabra ) {
+        terminar("<h1 style='color: GREEN '>FELICIDADES, HAS GANADO</h1>");
+        return
+    }
+    for (let i in palabra){
+        if (INTENTO[i]===palabra[i]){
+            console.log(INTENTO[i], "VERDE")
+        } else if( palabra.includes(INTENTO[i]) ) {
+            console.log(INTENTO[i], "AMARILLO")
+        } else {
+            console.log(INTENTO[i], "GRIS")
+        }
+    }
+    intentos--
+    if (intentos==0){
+        terminar("<h1 style='color: RED'>LO SIENTO, HAS PERDIDO</h1>");
+    }
+
+
+}}
+
+function leerIntento(){
+    let intento = document.getElementById("guess-input");
+    intento = intento.value;
+    intento = intento.toUpperCase(); 
+    return intento;
 }
 
+function terminar(mensaje){
+
+    const INPUT = document.getElementById("guess-input");
+    const BOTON = document.getElementById("guess-button");
+    INPUT.disabled = true;
+    BOTON.disabled = true;
+    let contenedor = document.getElementById('guesses');
+    contenedor.innerHTML = mensaje;
+}
+
+
+
+
+window.addEventListener('load', init);
+function init(){
+    console.log('Esto se ejecuta solo cuando se carga la pagina web')
+}
+
+
+/*const reinicioButton = document.getElementById("reset");
+reinicioButton.addEventListener("click", reiniciar);
 function reiniciar() {
-    FLU.innerHTML = "";
-    MAN.innerHTML = "";
-    TEXTO.style.display = "block";
-    TITULO.style.display = "block";
-    ERROR.style.display = "none";
-    FLU.style.display = "none";
-    MAN.style.display = "none";
-    document.getElementById("peso").value = "";
-  }
-
-CALCULAR.addEventListener('click', () => {
-    const DATO = document.getElementById('peso').value
-    if (DATO > 0){
-        ERROR.style.display = 'none'
-        let flujo = calculo(DATO);
-        FLU.innerHTML =  flujo;
-        MAN.innerHTML = 'Los resultados son una aproximacion y pueden no ser exactos'
-        FLU.style.display = 'block';
-        MAN.style.display = 'block';
-        TEXTO.style.display = 'none';
-        TITULO.style.display = 'none';
-        setTimeout(reiniciar, 30000)
-
-    } else {
-        ERROR.style.display = 'block';
-        FLU.style.display = 'none';
-        MAN.style.display = 'none';
-        TEXTO.style.display = 'block';
-        TITULO.style.display = 'block';
-    }
-   
-})
+  window.location.reload();
+}*/
